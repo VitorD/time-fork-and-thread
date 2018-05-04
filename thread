@@ -1,0 +1,53 @@
+
+//INICIO DO PROGRAMA DE THREAD
+void threadexe(void)
+{
+
+
+
+//DEFINIÇAO DE DAS 3 THREADS
+void *PrintA(void *threadid)
+{
+   printf("thread 1 executando...\n");
+   vet[0] = 'A';
+   pthread_exit(NULL);
+}
+void *PrintB(void *threadid)
+{
+   printf("thread 2 executando...\n");
+   vet[1] = 'B';
+  pthread_exit(NULL);
+}
+
+void *PrintC(void *threadid)
+{
+   printf("thread 3 executando...\n");
+   vet[2] = 'C';
+   pthread_exit(NULL);
+}
+//TERMINO
+
+
+   pthread_t threads[NUM_THREAD];
+   int rc;
+   long t;
+  
+      rc = pthread_create(&threads[0], NULL, PrintA, (void *)t);
+	pthread_join(threads[0],NULL);
+	
+      rc = pthread_create(&threads[1], NULL, PrintB, (void *)t);
+	pthread_join(threads[1],NULL);
+      rc = pthread_create(&threads[2], NULL, PrintC, (void *)t);
+	pthread_join(threads[2],NULL);
+      if (rc){
+         printf("ERROR; return code from pthread_create() is %d\n", rc);
+         exit(-1);
+      }
+
+ printf("olha ai o que da juntar as threads: %s\n", vet);
+   
+
+
+}
+
+//TERMINO DAS THREADS
