@@ -1,0 +1,35 @@
+int main(void)
+{
+float soma=0.0, media=0.0,somath=0.0, mediath=0.0;
+int m =20, i; // Número de execuções da tarefa
+    const double CLK_TCK = 1000.0;
+    const double CLK_TCK1 = 10000.0;
+    clock_t iniciar, parar, iniciarth, pararth;
+   iniciarth = clock();
+for(i=1;i<=m;i++){
+    threadexe();
+    pararth = clock();
+    printf( "Execution time da thread %d : %lf miliseconds\n", i, (pararth - iniciarth) / CLK_TCK1);
+    somath = somath + ((pararth - iniciarth) / CLK_TCK1);
+}
+    iniciar = clock();
+for(i=1;i<=m;i++){
+    fork1();
+    parar = clock();
+    printf( "Execution time do processo %d : %lf seconds\n", i, (parar - iniciar) / CLK_TCK);
+    soma = soma + ((parar - iniciar) / CLK_TCK);
+}
+
+ 
+media = soma / m;
+printf( "\n A media da execução dos processos é %f segundos", media);
+
+mediath = somath / m;
+printf( "\n A media da execução das threads é %f milisegundos\n", mediath);
+
+  if (media>mediath){
+      printf("o programa usando thread é mais rapido : sua media é %f milisegundos\n", mediath);
+}else {
+      printf("o programa usando processos é mais rapido : sua media é %f segundos\n", media);
+    }
+}
