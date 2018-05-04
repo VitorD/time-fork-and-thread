@@ -1,3 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <unistd.h>
+#include <time.h>
+
+#define NUM_THREAD  3
+ char vet[3];
+
 int main(void)
 {
 float soma=0.0, media=0.0,somath=0.0, mediath=0.0;
