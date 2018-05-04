@@ -1,0 +1,37 @@
+void fork1(void){
+
+
+
+ //INICIO DA PRIMITIVA FORK
+char fin[4] = {' ',' ',' ',' '};
+char s[4] = {' ','A','B','C'};
+int i , pid;   
+     printf("Oi, eu sou o processo pai %d\n",getpid()) ;
+
+   
+     printf("\tNesse instante, o pai gera tres filhos\n") ;
+     for(i=1;i<=3;i++){
+     if((pid=fork())==-1) /* erro */
+     {
+          perror("impossivel de criar um filho") ;
+          exit(-1) ;
+     }
+     else if(pid==0) /* filho */
+     {
+          printf("Oi, eu sou o %d, filho numero %d\n",getpid(),i) ;
+          printf("e armazeno a letra : %c\n",s[i]) ;
+          fin[i] = s[i];
+ 
+          exit(1) ;
+     }
+}
+    if(pid > 0)
+     {
+        sleep(1) ;
+       printf("pronto agora vamos ver o que meus filhos mostram juntos : %s\n",fin) ;
+          
+      
+     }
+     
+ //TERMINO DA PRIMITIVA FORK
+
